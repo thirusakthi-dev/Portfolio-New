@@ -3,8 +3,7 @@ import "../style/blocks/contact.scss";
 import "../style/responsive.scss";
 
 import emailjs from "@emailjs/browser";
-import Error from "../assets/icons/fail.svg";
-import Success from "../assets/icons/success.svg";
+
 import { SocialIcons } from "../utils/Icons";
 import { useDarkMode } from "./ThemeContext";
 
@@ -163,7 +162,7 @@ const Contact: React.FC = () => {
           </ul>
         </section>
 
-        <form className="contact-form" ref={form} onSubmit={sendEmail}>
+        {/* <form className="contact-form" ref={form} onSubmit={sendEmail}>
           <div>
             <label htmlFor="name">Name</label>
             <input
@@ -210,7 +209,7 @@ const Contact: React.FC = () => {
               <p>{emailAlert.message}</p>
             </div>
           )}
-        </form>
+        </form> */}
       </div>
     </section>
   );
