@@ -1,17 +1,17 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React from "react";
 import "../style/blocks/contact.scss";
 import "../style/responsive.scss";
 
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 
 import { SocialIcons } from "../utils/Icons";
 import { useDarkMode } from "./ThemeContext";
 
-interface FormData {
-  from_name: string;
-  from_email: string;
-  message: string;
-}
+// interface FormData {
+//   from_name: string;
+//   from_email: string;
+//   message: string;
+// }
 
 const Contact: React.FC = () => {
   const { darkMode } = useDarkMode();
@@ -22,74 +22,74 @@ const Contact: React.FC = () => {
     (item) => item.icon
   );
 
-  const [emailAlert, setEmailAlert] = useState<{
-    message: string;
-    type: "success" | "error";
-  } | null>(null);
+  // const [emailAlert, setEmailAlert] = useState<{
+  //   message: string;
+  //   type: "success" | "error";
+  // } | null>(null);
 
-  useEffect(() => {
-    // Clear alert message after 5 seconds
-    if (emailAlert) {
-      const timer = setTimeout(() => {
-        setEmailAlert(null);
-      }, 5000);
+  // useEffect(() => {
 
-      return () => clearTimeout(timer);
-    }
-  }, [emailAlert]);
+  //   if (emailAlert) {
+  //     const timer = setTimeout(() => {
+  //       setEmailAlert(null);
+  //     }, 5000);
 
-  const form = useRef<HTMLFormElement>(null);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [emailAlert]);
 
-  const sendEmail = (e: any) => {
-    e.preventDefault();
+  // const form = useRef<HTMLFormElement>(null);
 
-    if (form.current !== null) {
-      emailjs
-        .sendForm(
-          "service_avd5b17",
-          "template_90uiro5",
-          form.current,
-          "_HGpmxnhaQ08Arn1l"
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-            setFormData({
-              from_name: "",
-              from_email: "",
-              message: "",
-            });
-            setEmailAlert({
-              message: "Email sent successfully!",
-              type: "success",
-            });
-          },
-          (error) => {
-            console.log(error.text);
-            setEmailAlert({
-              message: "Failed to send email. Please try again.",
-              type: "error",
-            });
-          }
-        );
-    }
-  };
+  // const sendEmail = (e: any) => {
+  //   e.preventDefault();
 
-  const [formData, setFormData] = useState<FormData>({
-    from_name: "",
-    from_email: "",
-    message: "",
-  });
+  //   if (form.current !== null) {
+  //     emailjs
+  //       .sendForm(
+  //         "service_avd5b17",
+  //         "template_90uiro5",
+  //         form.current,
+  //         "_HGpmxnhaQ08Arn1l"
+  //       )
+  //       .then(
+  //         (result) => {
+  //           console.log(result.text);
+  //           setFormData({
+  //             from_name: "",
+  //             from_email: "",
+  //             message: "",
+  //           });
+  //           setEmailAlert({
+  //             message: "Email sent successfully!",
+  //             type: "success",
+  //           });
+  //         },
+  //         (error) => {
+  //           console.log(error.text);
+  //           setEmailAlert({
+  //             message: "Failed to send email. Please try again.",
+  //             type: "error",
+  //           });
+  //         }
+  //       );
+  //   }
+  // };
 
-  const handleOnChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  // const [formData, setFormData] = useState<FormData>({
+  //   from_name: "",
+  //   from_email: "",
+  //   message: "",
+  // });
+
+  // const handleOnChange = (
+  //   e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value } = e.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
+  // };
 
   // const handleSumbit = (e: FormEvent) => {
   //   e.preventDefault();
